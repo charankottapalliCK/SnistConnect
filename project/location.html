@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Get Location</title>
+</head>
+<body>
+<a href='#' id="get_location">Click here to see your location</a>
+<div id="map">
+<iframe id="google_map" width="1050" height="600"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0"  src="https://maps.google.co.uk?output=embed"></iframe>
+</div>
+<script>
+var c = function(pos){
+var lat = pos.coords.latitude,
+long = pos.coords.longitude,
+acc = pos.coords.accuracy,
+coords = lat + ', '+long;
+document.getElementById('google_map').setAttribute('src','https://maps.google.co.uk/?q=' + coords + '&z=60&output=embed');
+}
+var e =function(error){
+
+}
+document.getElementById('get_location').onclick=function(){
+navigator.geolocation.getCurrentPosition(c,e);
+return false;
+}
+</script>
+</body>
+</html>
